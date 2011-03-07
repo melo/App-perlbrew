@@ -64,7 +64,10 @@ perlbrew () {
                 mkdir -p $HOME/.perlbrew
             fi
 
-            if [[ -x "$PERLBREW_ROOT/perls/$2/bin/perl" ]]; then
+            if [ -z "$2" ] ; then
+              command perlbrew $short_option switch
+
+            elif [[ -x "$PERLBREW_ROOT/perls/$2/bin/perl" ]]; then
                 __perlbrew_reinit $2
 
             elif [[ "$2" = "system" ]]; then
